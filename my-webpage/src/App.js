@@ -18,6 +18,10 @@ function App() {
         <h2>4th year Enterprise Computing</h2>
       </header>
       <body>
+        <div>
+          <h3>About Me</h3>
+          <p>I code</p>
+        </div>
         <div className="Project-box">
           <h3>Projects</h3>
           <div>
