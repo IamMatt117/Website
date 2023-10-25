@@ -45,7 +45,7 @@ function App() {
           <div className="container">
           <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>The Big Haul</h3>
-            <img style={{width: '250px', margin: 'auto', padding: 'auto', display: 'block'}} src={haul}></img>
+            <img style={{width: '25vw', margin: 'auto', padding: 'auto', display: 'block'}} src={haul}></img>
           </div>
           <div className='item-a-p' style={{background: '#F1F0F0', position: 'relative'}}>
             <p style={{marginLeft: '10px'}}>Users are asked a series of questions that they have to answer.The first answer will earn the user $100. Correct answers from that point forward will double what's in the users bank. Each incorrect answer will remove a life. Failing the final round will result in a game over. The aim is to reach $500,000 with at least 1 life. You reach $500,000 if you earn the Big Haul by reaching the end. Losing 3 lives will cause the User to lose and the game ends. Each game holds a variety of rounds with each round being unique while keeping them dynamic to make sure not every game will play out the same as the previous one.</p>
@@ -53,7 +53,7 @@ function App() {
             </div>
           <div className='item-b' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>Park at DCU</h3>
-            <img src={park} style={{width: '250px', margin: 'auto', padding: 'auto', display: 'block'}}></img>
+            <img src={park} style={{width: '30vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
             </div>
             <div className='item-b-p' style={{background: '#F1F0F0', position: 'relative'}}>
             <p>Struggling to park at DCU? This Web App retrieves available spaces from all DCU carparks and relays that information back to the user. Simply input the carpark you wish to use and the Web App will display the number of available spaces (if any).</p>
@@ -61,7 +61,7 @@ function App() {
           </div>
           <div className='item-c' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>Django Web App - In Progress</h3>
-            <img src={django}style={{width: '250px', margin: 'auto', padding: 'auto', display: 'block'}}></img>
+            <img src={django}style={{width: '25vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
             </div>
             <div className='item-c-p' style={{background: '#F1F0F0', position: 'relative'}}>
             <p>This is a simple Web App designed using Django.</p>
@@ -69,7 +69,7 @@ function App() {
           </div>
           <div className='item-d' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>Road Ready - In Progress</h3>
-            <img src={road} style={{height: '238px', margin: 'auto', padding: 'auto', display: 'block'}}></img>
+            <img src={road} style={{height: '25vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
             </div>
             <div className='item-d-p' style={{background: '#F1F0F0', position: 'relative'}}>
             <p>A Mobile App designed to create a one stop place to study for the Driving/Theory Test. The app hosts 3 main features. The first feature being Learning Material, a section containing any information a user might need about rules of the road. The second feature is a Theory Questionnaire with feedback, this feature is designed to allow the user to practice their knowledge for the Theory Test with feedback to help them improve on areas where they are weak. The last feature is a a tool with prebuilt test routes and ability to create new routes.</p>
