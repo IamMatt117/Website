@@ -173,3 +173,21 @@
 html body {
   overflow-x: hidden;
 }
+
+@media (max-width: 900px) {
+  p {
+    font-size: 10px;
+  }
+  h3, h2 {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 400px) {
+  p {
+    font-size: 20px;
+  }
+}
