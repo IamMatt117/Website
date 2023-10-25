@@ -49,7 +49,7 @@
 }
 
 .nav1:hover{
-  color: #F7DC4F;
+  color: #F7DC4F !important;
   cursor: pointer;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .nav2:hover{
-  color: #F7DC4F;
+  color: #F7DC4F !important;
   cursor: pointer;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .nav3:hover{
-  color: #F7DC4F;
+  color: #F7DC4F !important;
   cursor: pointer;
 }
 
