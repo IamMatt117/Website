@@ -37,10 +37,10 @@ function App() {
       </div>
       <body>
         <div id='About' className="About">
-          <h3 style={{color: '#015761'}}>About Me</h3>
+          <h2 style={{color: '#015761'}}>About Me</h2>
           <p>I code</p>
         </div>
-          <h3 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h3>
+          <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <div>
           <div className="container">
           <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>
@@ -76,13 +76,13 @@ function App() {
             <a className='code-button' href="https://gitlab.computing.dcu.ie/mahonm28/2024-ca472-mahonm28-rawata2" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>Veiw Code</a>
           </div>
           </div>
-            <h3 style={{color: '#015761'}}>Resume</h3>
+            <h2 style={{color: '#015761'}}>Resume</h2>
           <div id='Resume' style={{background: '#F1F0F0'}}>
             <img className="cv" src={resume} style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}></img>
           </div>
         </div>
         <div style={{background: '#015761', color: 'white'}}>
-          <h3 id='contact'>Contact Me</h3>
+          <h2 id='contact'>Contact Me</h2>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', marginLeft: '25%', marginRight: '25%' }}>
             <a href="https://www.linkedin.com/in/matthew-mahon-29a768297/">
               <img className='linkedin' src={linkedin} onMouseOver={e => {e.currentTarget.src = linkedinRed; setHover(true)}} onMouseOut={e => {e.currentTarget.src = linkedin; setHover(false)}} style={ hover ? {cursor: 'pointer'} : {cursor: 'default'}} />
