@@ -1,13 +1,12 @@
 .App {
   text-align: middle;
-  background-color: #282c34;
-  height: 100vh;
-  width: 100vw;
+  background-color: #015761;
+  color: white;
 }
 
 
 .App-header {
-  background-color: #282c34;
+  background-color: #015761;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,4 +19,91 @@
   width: 2vw;
 }
 
+.About {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #F1F0F0;
+}
+
+.column-left{
+  width: 50%;
+  float: left;
+  height: 300px;
+}
+
+.column-right{
+  width: 50%;
+  float: right;
+  height: 300px;
+}
+
+.navigation{
+  left: 2vw;
+  top: 2vh;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+}
+
+.nav1:hover{
+  color: #F7DC4F;
+  cursor: pointer;
+}
+
+.nav1:visited, .nav1:link, .nav1:active{
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav2:hover{
+  color: #F7DC4F;
+  cursor: pointer;
+}
+
+.nav2:visited, .nav2:link, .nav2:active{
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav3:hover{
+  color: #F7DC4F;
+  cursor: pointer;
+}
+
+.nav3:visited, .nav3:link, .nav3:active{
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav4:visited, .nav4:link, .nav4:active{
+  text-decoration: none;
+  color: inherit;
+}
+.nav4:hover{
+  color: #F7DC4F;
+  cursor: pointer;
+}
+
+.code-button{
+  background-color: #F7DC4F;
+  border-radius: 4px;
+  color: #015761;
+}
+
+.code-button:hover{
+  background-color: #015761;
+  color: #F7DC4F !important;
+}
+
+.code-button:visited, .code-button:link, .code-button:active{
+  text-decoration: none;
+  color: #015761;
+}
+
+.cv {
+  border: solid 1px;
+}
 
