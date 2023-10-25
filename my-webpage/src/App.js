@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import linkedin from './images/Linkedin.png';
 import linkedinRed from './images/linkedinRed.png';
@@ -11,6 +11,10 @@ import resume from './images/Resume-cropped.svg'
 
 function App() {
   const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    document.title = "Portfolio"
+ }, []);
 
   return (
     <div>
