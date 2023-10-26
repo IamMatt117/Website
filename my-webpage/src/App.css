@@ -91,6 +91,7 @@
   background-color: #F7DC4F;
   border-radius: 4px;
   color: #015761;
+  float: left;
 }
 
 .code-button:hover{
@@ -183,6 +184,10 @@ html body {
   }
   h1 {
     font-size: 25px;
+  }
+  .code-button{
+    font-size: 10px;
+    bottom: 5px !important;
   }
 }
 
