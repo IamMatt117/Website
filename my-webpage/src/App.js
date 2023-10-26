@@ -17,7 +17,7 @@ function App() {
   const [hover, setHover] = useState(false);
 
   useEffect(() => {
-    document.title = "Portfolio"
+    document.title = "Matthew Mahon"
  }, []);
 
   return (
