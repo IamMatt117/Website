@@ -30,7 +30,7 @@ function App() {
           <a className='nav4' href='#contact'>Contact Me</a>
         </div>
         <header className="App-header">
-          <h1> Matthew Mahon </h1>
+          <h1 style={{marginBottom: 0}}> Matthew Mahon </h1>
           <p style={{margin: '0px', fontSize: '2vmin', color: '#F7DC4F'}}>Software Development / Quality Assurance</p>
           <h2>4th year Enterprise Computing</h2>
         </header>
@@ -38,7 +38,7 @@ function App() {
       <body>
         <div id='About' className="About">
           <h2 style={{color: '#015761'}}>About Me</h2>
-          <p>I code</p>
+          <p>Hi my names Matthew. I'm a 23-year-old adventurer with a deep passion for the outdoors. I find solace in the wilderness, frequently embarking on hikes and camping expeditions to reconnect with nature. Beyond the landscapes, I'm a fierce competitor on the football field, displaying both skill and sportsmanship. With four years of programming experience under my belt, I've honed my technical prowess and problem-solving abilities. Currently, I am pursuing higher education at Dublin City University, where they're undoubtedly combining their love for technology with their academic pursuits to forge a promising future. This dynamic blend of outdoor enthusiasm, athletic prowess, and technical acumen makes me a multifaceted and driven individual.</p>
         </div>
           <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <div>
