@@ -11,37 +11,70 @@ import haul from './images/BigHaul.png'
 import park from './images/park.jpg'
 import road from './images/car.png'
 import django from './images/Django.png'
+import SidePanel from './components/sidepanel';
 
 
 function App() {
   const [hover, setHover] = useState(false);
 
   useEffect(() => {
-    document.title = "Matthew Mahon"
- }, []);
+    document.title = "Matthew Mahon";
+
+    const words = ["Software Development", "Quality Assurance", "Web Development", "Mobile Development"];
+    let i = 0;
+    let j = 0;
+    let currentWord = '';
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const deletingSpeed = 100;
+    const delayBetweenWords = 1000;
+
+    const type = () => {
+      const element = document.querySelector('.typing');
+      if (!element) return;
+
+      if (isDeleting) {
+        currentWord = words[i].substring(0, j--);
+      } else {
+        currentWord = words[i].substring(0, j++);
+      }
+
+      element.textContent = currentWord;
+
+      if (!isDeleting && j === words[i].length) {
+        setTimeout(() => isDeleting = true, delayBetweenWords);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % words.length;
+      }
+
+      setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
+    };
+
+    type();
+  }, []);
 
   return (
     <div>
+    <SidePanel/>
       <div className="App">
-        <div className="navigation">
-          <a className='nav1' href='#About'>About Me</a>
-          <a className='nav2' href='#Projects'>Projects</a>
-          <a className='nav3' href='#Resume'>Resume</a>
-          <a className='nav4' href='#contact'>Contact Me</a>
-        </div>
         <header className="App-header">
+          <div className='header-content' style={{textAlign: 'center'}}>
           <h1 style={{marginBottom: 0}}> Matthew Mahon </h1>
-          <p style={{margin: '0px', fontSize: '2vmin', color: '#F7DC4F'}}>Software Development / Quality Assurance</p>
-          <h2>4th year Enterprise Computing</h2>
+          <div className='wrapper'>
+          <p className='typing'>Software Development / Quality Assurance</p>
+          </div>
+          </div>
+          <img src={require('./images/me-no-background.png')} className="header-image" alt="logo" />
         </header>
       </div>
       <body>
-        <div id='About' className="About">
+        <section id='About' className="About">
           <h2 style={{color: '#015761'}}>About Me</h2>
           <p>Hi my names Matthew. I'm a 23-year-old adventurer with a deep passion for the outdoors. I find solace in the wilderness, frequently embarking on hikes and camping expeditions to reconnect with nature. Beyond the landscapes, I'm a fierce competitor on the football field, displaying both skill and sportsmanship. With four years of programming experience under my belt, I've honed my technical prowess and problem-solving abilities. Currently, I am pursuing higher education at Dublin City University, where they're undoubtedly combining their love for technology with their academic pursuits to forge a promising future. This dynamic blend of outdoor enthusiasm, athletic prowess, and technical acumen makes me a multifaceted and driven individual.</p>
-        </div>
+        </section>
           <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
-          <div>
+          <section id='Projects' className="Projects">
           <div className="container">
           <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>The Big Haul</h3>
@@ -76,11 +109,14 @@ function App() {
             <a className='code-button' href="https://gitlab.computing.dcu.ie/mahonm28/2024-ca472-mahonm28-rawata2" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>View Code</a>
           </div>
           </div>
+        </section>
+        <section id='Resume' className="Resume">
             <h2 style={{color: '#015761'}}>Resume</h2>
           <div id='Resume' style={{background: '#F1F0F0'}}>
             <img className="cv" src={resume} style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}></img>
           </div>
-        </div>
+        </section>
+        <section id='contact' className="Contact">
         <div style={{background: '#015761', color: 'white'}}>
           <h2 id='contact'>Contact Me</h2>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', marginLeft: '25%', marginRight: '25%' }}>
@@ -94,6 +130,7 @@ function App() {
             </a>
           </div>
         </div>
+        </section>
       </body>
     </div>
   );

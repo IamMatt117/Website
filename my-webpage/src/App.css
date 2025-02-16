@@ -14,6 +14,57 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-header {
+  background-color: #015761;
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center;
+  justify-content: space-between; /* Space between content and image */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header-content {
+  width: 50%; /* Take 50% of the left side */
+}
+
+.header-image {
+  width: 50%; /* Take 50% of the right side */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 20px; /* Optional: Add margin to separate from content */
+}
+
+@media (max-width: 600px) {
+  .App-header {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center;
+  }
+
+  .header-content, .header-image {
+    width: 100%; /* Take full width on smaller screens */
+    margin-left: 0; /* Remove left margin for smaller screens */
+    margin-top: 20px; /* Optional: Add top margin to separate from content */
+  }
+}
+
+.wrapper {
+ /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
+
+
+.typing {
+  width: auto;
+  animation: typing 3s steps(22, end) infinite, blink .75s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #F7DC4F;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+
 
 .linkedin {
   max-height: 10vh;
