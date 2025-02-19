@@ -6,32 +6,26 @@
 
 
 .App-header {
-  background-color: #015761;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.App-header {
-  background-color: #015761;
   display: flex;
   flex-direction: row; /* Align items horizontally */
   align-items: center;
   justify-content: space-between; /* Space between content and image */
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .header-content {
   width: 50%; /* Take 50% of the left side */
+  z-index: 1;
 }
 
 .header-image {
   width: 50%; /* Take 50% of the right side */
   height: auto; /* Maintain aspect ratio */
   margin-left: 20px; /* Optional: Add margin to separate from content */
+  z-index: 1;
 }
 
 @media (max-width: 600px) {
@@ -51,6 +45,10 @@
  /*This part is important for centering*/
   display: grid;
   place-items: center;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+
 }
 
 
@@ -62,9 +60,75 @@
   border-right: 3px solid #F7DC4F;
   font-family: monospace;
   font-size: 1em;
+  z-index: 1;
 }
 
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg,#E28413 50%, #000022 50%);
+  left: -50%;
+  opacity: .5;
+  position: absolute; /* Position the background absolutely within the header */
+  right: -50%;
+  top: 0;
+  bottom: 0; /* Ensure the background covers the entire height of the header */
+  z-index: -1; /* Ensure the background is behind the content */
+}
 
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+.about-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 80px;
+  align-items: center;
+}
+
+.about-image {
+  width: 400px;
+  height: auto;
+  margin-left: -90px;
+}
+
+.about-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 60px;
+  grid-row-gap: 70px;
+  margin-right: 170px;
+  list-style-type: none;
+  font-size: 1em;
+}
+
+.about-list li {
+  display: flex;
+  align-items: center;
+}
+
+.about-list i{
+  font-size: 2em;
+  color: #E28413;
+  margin-right: 10px;
+}
+
+.about-list b {
+  margin-right: 6px;
+}
 
 .linkedin {
   max-height: 10vh;
@@ -75,8 +139,108 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: #F1F0F0;
+  background-color: #FBF5F3;
 }
+
+.About h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure the h2 takes the full width */
+  padding-left: 70px; /* Optional: Add padding to the left */
+  position: relative; /* Position relative to allow absolute positioning of underline */
+}
+
+.About h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  border-bottom: 3px solid #E28413;
+  padding-bottom: 10px;
+}
+
+.Skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000022;
+}
+
+.Skills h2 {
+  margin-bottom: 20px;
+  color: #FBF5F3;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px;
+  width: 100vw;
+  max-width: 800px;
+  margin-bottom: 10vh;
+}
+
+.skill-item {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.skill-name {
+  margin-bottom: 5px;
+  color: #FBF5F3;
+}
+
+.skill-wrapper {
+  width: 100%;
+  background-color: #ddd;
+  height: 20px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.skill {
+  height: 100%;
+  text-align: right;
+  line-height: 20px;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  padding-right: 10px;
+}
+
+.skill.html {
+  width: 98%;
+  background-color: #E28413;
+}
+
+.skill.php {
+  width: 60%;
+  background-color: #E28413;
+}
+
+.skill.css {
+  width: 80%;
+  background-color: #E28413;
+}
+
+.skill.javascript {
+  width: 75%;
+  background-color: #E28413;
+}
+
+.skill.react {
+  width: 75%;
+  background-color: #E28413;
+}
+
+.skill.python {
+  width: 85%;
+  background-color: #E28413;
+}
+
 
 .column-left{
   width: 50%;

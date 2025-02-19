@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import './css/App.css';
 import linkedin from './images/Linkedin.png';
 import linkedinRed from './images/linkedinRed.png';
 import email from './images/email.png'
@@ -60,19 +60,74 @@ function App() {
       <div className="App">
         <header className="App-header">
           <div className='header-content' style={{textAlign: 'center'}}>
-          <h1 style={{marginBottom: 0}}> Matthew Mahon </h1>
+          <h1 style={{marginBottom: 0, zIndex: 1}}> Matthew Mahon </h1>
+          <div class="bg"></div>
+          <div class="bg bg2"></div>
+          <div class="bg bg3"></div>
           <div className='wrapper'>
           <p className='typing'>Software Development / Quality Assurance</p>
           </div>
           </div>
-          <img src={require('./images/me-no-background.png')} className="header-image" alt="logo" />
+          <img src={require('./images/grad.png')} className="header-image" alt="logo" />
         </header>
       </div>
       <body>
-        <section id='About' className="About">
-          <h2 style={{color: '#015761'}}>About Me</h2>
-          <p>Hi my names Matthew. I'm a 23-year-old adventurer with a deep passion for the outdoors. I find solace in the wilderness, frequently embarking on hikes and camping expeditions to reconnect with nature. Beyond the landscapes, I'm a fierce competitor on the football field, displaying both skill and sportsmanship. With four years of programming experience under my belt, I've honed my technical prowess and problem-solving abilities. Currently, I am pursuing higher education at Dublin City University, where they're undoubtedly combining their love for technology with their academic pursuits to forge a promising future. This dynamic blend of outdoor enthusiasm, athletic prowess, and technical acumen makes me a multifaceted and driven individual.</p>
-        </section>
+      <section id='About' className="About">
+        <h2 style={{ color: '#000022' }}>About Me</h2>
+        <p>Hi my names Matthew. I'm a 23-year-old adventurer with a deep passion for the outdoors. I find solace in the wilderness, frequently embarking on hikes and camping expeditions to reconnect with nature. Beyond the landscapes, I'm a fierce competitor on the football field, displaying both skill and sportsmanship. With four years of programming experience under my belt, I've honed my technical prowess and problem-solving abilities. Currently, I am pursuing higher education at Dublin City University, where they're undoubtedly combining their love for technology with their academic pursuits to forge a promising future. This dynamic blend of outdoor enthusiasm, athletic prowess, and technical acumen makes me a multifaceted and driven individual.</p>
+        <div className="about-container">
+          <img src={require('./images/Suit.png')} className="about-image" alt="logo" />
+          <ul className="about-list">
+            <li><i class="bi bi-chevron-right"></i><b>Birthday:</b> 2 May 2000</li>
+            <li><i class="bi bi-chevron-right"></i><b>Age:</b> 25</li>
+            <li><i class="bi bi-chevron-right"></i><b>Degree:</b> Bachelor of Science</li>
+            <li><i class="bi bi-chevron-right"></i><b>Phone:</b> +353 87 633 0746</li>
+            <li><i class="bi bi-chevron-right"></i><b>Email:</b> matthewmahon@rocketmail.com</li>
+            <li><i class="bi bi-chevron-right"></i><b>City:</b> Dublin, Ireland</li>
+          </ul>
+        </div>
+      </section>
+      <section id='Skills' className="Skills">
+        <h2>Skills</h2>
+        <div className='grid-container'>
+          <div class="skill-item">
+            <div class="skill-name">HTML</div>
+            <div class="skill-wrapper">
+              <div class="skill html">100%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Django</div>
+            <div class="skill-wrapper">
+              <div class="skill php">60%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">CSS</div>
+            <div class="skill-wrapper">
+              <div class="skill css">80%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">JavaScript</div>
+            <div class="skill-wrapper">
+              <div class="skill javascript">75%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">React</div>
+            <div class="skill-wrapper">
+              <div class="skill react">75%</div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name">Python</div>
+            <div class="skill-wrapper">
+              <div class="skill python">85%</div>
+            </div>
+          </div>
+        </div>
+      </section>
           <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <section id='Projects' className="Projects">
           <div className="container">
