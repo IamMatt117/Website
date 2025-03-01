@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './css/App.css';
 import linkedin from './images/Linkedin.png';
 import linkedinRed from './images/linkedinRed.png';
@@ -12,10 +15,62 @@ import park from './images/park.jpg'
 import road from './images/car.png'
 import django from './images/Django.png'
 import SidePanel from './components/sidepanel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { 
+  faHtml5, 
+  faCss3Alt, 
+  faJs, 
+  faReact, 
+  faVuejs, 
+  faBootstrap, 
+  faNodeJs, 
+  faJava, 
+  faPython, 
+  faGit,
+  faGitAlt
+} from '@fortawesome/free-brands-svg-icons'
+import { faDatabase } from '@fortawesome/free-solid-svg-icons'
 
+library.add(
+  faHtml5, 
+  faCss3Alt, 
+  faJs, 
+  faReact, 
+  faVuejs, 
+  faBootstrap, 
+  faNodeJs, 
+  faJava, 
+  faPython, 
+  faGitAlt,
+  faDatabase
+)
 
 function App() {
   const [hover, setHover] = useState(false);
+  const [skillsBackground, setSkillsBackground] = useState('linear-gradient(135deg, #000022 0%, #E28413 100%)');
+
+  const handleSkillHover = (skillName) => {
+    const gradients = {
+      html5: 'linear-gradient(135deg,rgb(77, 26, 15) 0%, #F16529 100%)',
+      css3: 'linear-gradient(135deg,rgb(2, 9, 36) 0%, #2965F1 100%)',
+      javascript: 'linear-gradient(135deg,rgb(80, 71, 17) 0%, #F7DF1E 100%)',
+      react: 'linear-gradient(135deg,rgb(7, 63, 65) 0%, #00D8FF 100%)',
+      vue: 'linear-gradient(135deg, #42B883 0%,rgb(15, 45, 78) 100%)',
+      tailwind: 'linear-gradient(135deg,rgb(2, 22, 31) 0%, #0EA5E9 100%)',
+      bootstrap: 'linear-gradient(135deg, #7952B3 0%, #563D7C 100%)',
+      nodejs: 'linear-gradient(135deg, #539E43 0%, #68A063 100%)',
+      java: 'linear-gradient(135deg,rgb(187, 69, 33) 0%, #5382A1 100%)',
+      python: 'linear-gradient(135deg, #3776AB 0%, #FFD43B 100%)',
+      sql: 'linear-gradient(135deg,rgb(11, 39, 61) 0%, #4479A1 100%)',
+      git: 'linear-gradient(135deg,rgb(58, 17, 10) 0%, #BD2C00 100%)'
+    };
+    setSkillsBackground(gradients[skillName] || 'linear-gradient(135deg, #000022 0%, #E28413 100%)');
+  };
+
+  const handleSkillLeave = () => {
+    setSkillsBackground('linear-gradient(135deg, #000022 0%, #E28413 100%)');
+  };
 
   useEffect(() => {
     document.title = "Matthew Mahon";
@@ -54,6 +109,53 @@ function App() {
     type();
   }, []);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    var panels = gsap.utils.toArray(".panel");
+    panels.pop();
+    
+    panels.forEach((panel, i) => {
+      
+      // Get the element holding the content inside the panel
+      let innerpanel = panel.querySelector(".panel-content");
+      
+      // Get the Height of the content inside the panel
+      let panelHeight = innerpanel.offsetHeight;
+      
+      // Get the window height
+      let windowHeight = window.innerHeight;
+      
+      let difference = panelHeight - windowHeight;
+      
+      // ratio (between 0 and 1) representing the portion of the overall animation that's for the fake-scrolling. We know that the scale & fade should happen over the course of 1 windowHeight, so we can figure out the ratio based on how far we must fake-scroll
+      let fakeScrollRatio = difference > 0 ? (difference / (difference + windowHeight)) : 0;
+      
+      // if we need to fake scroll (because the panel is taller than the window), add the appropriate amount of margin to the bottom so that the next element comes in at the proper time.
+      if (fakeScrollRatio) {
+        panel.style.marginBottom = panelHeight * fakeScrollRatio + "px";
+      }
+      
+      let tl = gsap.timeline({
+        scrollTrigger:{
+          trigger: panel,
+          start: "bottom bottom",
+          end: () => fakeScrollRatio ? `+=${innerpanel.offsetHeight}` : "bottom top",
+          pinSpacing: false,
+          pin: true,
+          scrub: true
+        }
+      });
+      
+      // fake scroll. We use 1 because that's what the rest of the timeline consists of (0.9 scale + 0.1 fade)
+      if (fakeScrollRatio) {
+        tl.to(innerpanel, {y:-difference, duration: 1 / (1 - fakeScrollRatio) - 1, ease: "none"});
+      }
+      tl.fromTo(panel, {scale:1, opacity:1}, {scale: 0.5, opacity: 0.5, duration: 0.9})
+        .to(panel, {opacity:0, duration: 0.1});
+    });
+  }, []);
+  
+
   return (
     <div>
     <SidePanel/>
@@ -87,49 +189,108 @@ function App() {
           </ul>
         </div>
       </section>
-      <section id='Skills' className="Skills">
-        <h2>Skills</h2>
-        <div className='grid-container'>
-          <div class="skill-item">
-            <div class="skill-name">HTML</div>
-            <div class="skill-wrapper">
-              <div class="skill html">100%</div>
+      <section id='Skills' className="Skills" style={{ background: skillsBackground }}>
+        <h2 style={{ color: '#ddd' }}>Skills</h2>
+        <div className="skills-container">
+          <div className="skills-column">
+            <h3>Frontend</h3>
+            <div className="skill-badges">
+              <div className="skill-badge" 
+                onMouseEnter={() => handleSkillHover('html5')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon html5"><FontAwesomeIcon icon={faHtml5} /> HTML</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('css3')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon css3"><FontAwesomeIcon icon={faCss3Alt} /> CSS</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('javascript')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon javascript"><FontAwesomeIcon icon={faJs} /> JavaScript</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('react')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon react"><FontAwesomeIcon icon={faReact} /> React</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('vue')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon vue"><FontAwesomeIcon icon={faVuejs} /> Vue</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('tailwind')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon tailwind"><svg className="skill-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 6C7.6 6 5.4 8.8 5.4 8.8L7.8 9.6C7.8 9.6 9 7.8 12 7.8C14.4 7.8 15.6 9 15.6 10.2C15.6 12 13.8 12 10.2 13.2C7.2 14.2 4.8 15.8 4.8 19C4.8 21.8 7 24 10.2 24C13.8 24 15 21.6 15 21.6L12.6 20.8C12.6 20.8 11.4 22.2 10.2 22.2C8.4 22.2 7.8 20.8 7.8 19.8C7.8 18.2 9 17.4 12 16.4C15.6 15.2 18.6 14 18.6 10.2C18.6 7.2 16.2 6 12 6Z"/></svg> Tailwind</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('bootstrap')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon bootstrap"><FontAwesomeIcon icon={faBootstrap} /> Bootstrap</span></span>
+              </div>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-name">Django</div>
-            <div class="skill-wrapper">
-              <div class="skill php">60%</div>
+          
+          <div className="skills-column">
+            <h3>Backend</h3>
+            <div className="skill-badges">
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('nodejs')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon nodejs"><FontAwesomeIcon icon={faNodeJs} /> Node.js</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('java')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon java"><FontAwesomeIcon icon={faJava} /> Java</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('python')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon python"><FontAwesomeIcon icon={faPython} /> Python</span></span>
+              </div>
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('sql')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon sql"><FontAwesomeIcon icon={faDatabase} /> SQL</span></span>
+              </div>
             </div>
           </div>
-          <div class="skill-item">
-            <div class="skill-name">CSS</div>
-            <div class="skill-wrapper">
-              <div class="skill css">80%</div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">JavaScript</div>
-            <div class="skill-wrapper">
-              <div class="skill javascript">75%</div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">React</div>
-            <div class="skill-wrapper">
-              <div class="skill react">75%</div>
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-name">Python</div>
-            <div class="skill-wrapper">
-              <div class="skill python">85%</div>
+          
+          <div className="skills-column">
+            <h3>Tools</h3>
+            <div className="skill-badges">
+              <div className="skill-badge"
+                onMouseEnter={() => handleSkillHover('git')}
+                onMouseLeave={handleSkillLeave}>
+                <span><span className="skill-icon git"><FontAwesomeIcon icon={faGitAlt} /> Git</span></span>
+              </div>
             </div>
           </div>
         </div>
       </section>
           <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <section id='Projects' className="Projects">
+          <div class="slides-wrapper">
+<section class="panel">
+	  <div class="panel-content"><h1>Section 1</h1>
+	  </div>
+</section>
+<section class="panel section-2">
+  <div class="panel-content height"><div class="dd"><h1>Section 2</h1>
+    <p>This section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes in</p>
+  </div></div>
+</section>
+<section class="panel section-3">
+	  <div class="panel-content"><h1>Section 3</h1></div>
+</section>
+<section class="panel">
+	  <div class="panel-content"><h1>Section 4</h1></div>
+</section>
+</div>
+
           <div className="container">
           <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>
             <h3>The Big Haul</h3>
