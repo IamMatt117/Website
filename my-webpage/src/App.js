@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import './css/App.css';
 import linkedin from './images/Linkedin.png';
 import linkedinRed from './images/linkedinRed.png';
@@ -27,7 +26,6 @@ import {
   faNodeJs, 
   faJava, 
   faPython, 
-  faGit,
   faGitAlt
 } from '@fortawesome/free-brands-svg-icons'
 import { faDatabase } from '@fortawesome/free-solid-svg-icons'
@@ -273,8 +271,8 @@ function App() {
       </section>
           <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <section id='Projects' className="Projects">
-          <div class="slides-wrapper">
-<section class="panel">
+          {/* <div class="slides-wrapper"> */}
+{/* <section class="panel">
 	  <div class="panel-content"><h1>Section 1</h1>
 	  </div>
 </section>
@@ -289,7 +287,7 @@ function App() {
 <section class="panel">
 	  <div class="panel-content"><h1>Section 4</h1></div>
 </section>
-</div>
+</div> */}
 
           <div className="container">
           <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>

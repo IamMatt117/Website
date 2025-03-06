@@ -165,8 +165,7 @@
   position: relative;
   overflow: hidden;
   background: #E84A24;
-  transition: background 0.5s ease-in-out;
-
+  /* transition: background 0.5s ease-in-out; */
 }
 
 .Skills h2 {
@@ -256,6 +255,7 @@
   mix-blend-mode: normal;
 }
 
+/* Commenting out hover effect styles
 .skill-badge:before,
 .skill-badge:after {
   content: "";
@@ -285,6 +285,7 @@
 .skill-badge:hover:after {
   transform: rotate(180deg) translateX(100%);
 }
+*/
 
 .skill-icon {
   display: flex;
@@ -293,12 +294,12 @@
   font-size: 1rem;
   font-weight: 400;
   color: white;
-  transition: color 0.3s ease;
+  /* transition: color 0.3s ease; */
 }
 
-.skill-badge:hover .skill-icon {
+/* .skill-badge:hover .skill-icon {
   color: var(--skill-color);
-}
+} */
 
 .skill-icon svg {
   color: var(--skill-color);
@@ -306,6 +307,21 @@
   height: 1.2em;
   mix-blend-mode: normal;
 }
+
+/* Keep the skill colors for reference */
+.skill-icon.html5 { --skill-color: #E44D26; }
+.skill-icon.css3 { --skill-color: #264DE4; }
+.skill-icon.javascript { --skill-color: #F0DB4F; }
+.skill-icon.react { --skill-color: #61DAFB; }
+.skill-icon.vue { --skill-color: #42B883; }
+.skill-icon.tailwind { --skill-color: #38BDF8; }
+.skill-icon.bootstrap { --skill-color: #7952B3; }
+.skill-icon.nodejs { --skill-color: #539E43; }
+.skill-icon.java { --skill-color: #007396; }
+.skill-icon.python { --skill-color: #3776AB; }
+.skill-icon.sql { --skill-color: #336791; }
+.skill-icon.mongodb { --skill-color: #47A248; }
+.skill-icon.git { --skill-color: #F05032; }
 
 /* Remove old hover styles */
 .skill-badge.html5:hover,
@@ -323,21 +339,6 @@
 .skill-badge.git:hover { 
   background: rgba(255, 255, 255, 0.1);
 }
-
-/* Keep the skill colors for reference */
-.skill-icon.html5 { --skill-color: #E44D26; }
-.skill-icon.css3 { --skill-color: #264DE4; }
-.skill-icon.javascript { --skill-color: #F0DB4F; }
-.skill-icon.react { --skill-color: #61DAFB; }
-.skill-icon.vue { --skill-color: #42B883; }
-.skill-icon.tailwind { --skill-color: #38BDF8; }
-.skill-icon.bootstrap { --skill-color: #7952B3; }
-.skill-icon.nodejs { --skill-color: #539E43; }
-.skill-icon.java { --skill-color: #007396; }
-.skill-icon.python { --skill-color: #3776AB; }
-.skill-icon.sql { --skill-color: #336791; }
-.skill-icon.mongodb { --skill-color: #47A248; }
-.skill-icon.git { --skill-color: #F05032; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
