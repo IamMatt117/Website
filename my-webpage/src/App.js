@@ -96,111 +96,96 @@ function App() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Header animations
-    gsap.from('.header-content h1', {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      delay: 0.2
-    });
-
-    gsap.from('.typing', {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      delay: 0.4
-    });
-
-    gsap.from('.header-image', {
-      opacity: 0,
-      scale: 0.8,
-      duration: 1,
-      delay: 0.6
-    });
-
     // About section animations
-    gsap.from('#About h2', {
-      scrollTrigger: {
-        trigger: '#About',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1
-    });
-
-    gsap.from('#About p', {
-      scrollTrigger: {
-        trigger: '#About p',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1
-    });
-
-    gsap.from('.about-image', {
-      scrollTrigger: {
-        trigger: '.about-image',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      scale: 0.8,
-      duration: 1
-    });
-
-    gsap.from('.about-list li', {
-      scrollTrigger: {
-        trigger: '.about-list',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      x: -30,
-      duration: 0.8,
-      stagger: 0.1
+    const aboutElements = document.querySelectorAll('#About h2, #About p, .about-image, .about-list li');
+    aboutElements.forEach((element, index) => {
+      gsap.fromTo(element,
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 90%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
     });
 
     // Skills section animations
-    gsap.from('#Skills h2', {
-      scrollTrigger: {
-        trigger: '#Skills',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
+    const skillsTitle = document.querySelector('#Skills h2');
+    gsap.fromTo(skillsTitle,
+      {
+        opacity: 0,
+        y: 50
       },
-      opacity: 0,
-      y: 30,
-      duration: 1
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: skillsTitle,
+          start: "top 90%",
+          end: "bottom 10%",
+          toggleActions: "play reverse play reverse",
+        }
+      }
+    );
+
+    const skillColumns = document.querySelectorAll('.skills-column');
+    skillColumns.forEach((column, index) => {
+      gsap.fromTo(column,
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.3,
+          scrollTrigger: {
+            trigger: column,
+            start: "top 90%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
     });
 
-    gsap.from('.skills-column', {
-      scrollTrigger: {
-        trigger: '.skills-container',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.2
+    const skillBadges = document.querySelectorAll('.skill-badge');
+    skillBadges.forEach((badge, index) => {
+      gsap.fromTo(badge,
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.8
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          delay: 0.5 + (index * 0.1),
+          scrollTrigger: {
+            trigger: badge,
+            start: "top 90%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
+          }
+        }
+      );
     });
 
-    gsap.from('.skill-badge', {
-      scrollTrigger: {
-        trigger: '.skills-container',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.5,
-      stagger: 0.1
-    });
-
-    // Project cards animation (existing)
+    // Project cards animation
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach((card, index) => {
       gsap.fromTo(card,
@@ -215,60 +200,52 @@ function App() {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse"
+            start: "top 90%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
           }
         }
       );
     });
 
     // Resume section animations
-    gsap.from('#Resume h2', {
-      scrollTrigger: {
-        trigger: '#Resume',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
+    gsap.fromTo('#Resume h2', 
+      {
+        opacity: 0,
+        y: 30
       },
-      opacity: 0,
-      y: 30,
-      duration: 1
-    });
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '#Resume',
+          start: 'top 90%',
+          end: 'bottom 10%',
+          toggleActions: 'play reverse play reverse',
+        }
+      }
+    );
 
-    gsap.from('.cv', {
-      scrollTrigger: {
-        trigger: '.cv',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
+    gsap.fromTo('.cv',
+      {
+        opacity: 0,
+        scale: 0.9
       },
-      opacity: 0,
-      scale: 0.9,
-      duration: 1
-    });
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.cv',
+          start: 'top 80%',
+          end: 'top 20%',
+          toggleActions: 'play reverse play reverse',
+        }
+      }
+    );
 
     // Contact section animations
-    gsap.from('#contact h2', {
-      scrollTrigger: {
-        trigger: '#contact',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1
-    });
-
-    gsap.from('.Contact img', {
-      scrollTrigger: {
-        trigger: '.Contact',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      },
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.8,
-      stagger: 0.2
-    });
 
     // Auto-advance carousel (existing code)
     const intervals = [];

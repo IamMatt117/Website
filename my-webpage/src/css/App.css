@@ -597,17 +597,55 @@ html body {
 html, body {
   margin: 0;
   height: 100%;
-  background:#000;
-  color:#141414;
+  background: #000;
+  color: #141414;
   -webkit-overflow-scrolling: touch;
   font-family: "Helvetica", sans-serif, Arial;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-body {
-  overflow-x: hidden;
-  overflow-y: scroll;
+body::-webkit-scrollbar {
+  display: none;
 }
 
+/* Hide scrollbars for all sections */
+section {
+  overflow: hidden !important;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure containers don't create scrollbars */
+.About, .Skills, .Projects, .Resume, .Contact {
+  overflow: hidden !important;
+}
+
+/* Allow content to be visible but hide scrollbars */
+.skills-container, .project-container, .about-container {
+  overflow: visible !important;
+}
+
+/* Remove scrollbars from main content area */
+main {
+  overflow: hidden !important;
+  position: relative;
+}
+
+/* Remove scrollbars from the root container */
+#root {
+  overflow: hidden !important;
+}
+
+/* Remove scrollbars from panels */
+.panel {
+  overflow: hidden !important;
+}
+
+/* Ensure carousel containers don't show scrollbars */
+.carousel-container {
+  overflow: hidden !important;
+}
 
 .nav{
   width:100%;
