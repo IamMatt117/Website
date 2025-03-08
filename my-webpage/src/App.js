@@ -96,7 +96,111 @@ function App() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Project cards animation
+    // Header animations
+    gsap.from('.header-content h1', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      delay: 0.2
+    });
+
+    gsap.from('.typing', {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      delay: 0.4
+    });
+
+    gsap.from('.header-image', {
+      opacity: 0,
+      scale: 0.8,
+      duration: 1,
+      delay: 0.6
+    });
+
+    // About section animations
+    gsap.from('#About h2', {
+      scrollTrigger: {
+        trigger: '#About',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1
+    });
+
+    gsap.from('#About p', {
+      scrollTrigger: {
+        trigger: '#About p',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1
+    });
+
+    gsap.from('.about-image', {
+      scrollTrigger: {
+        trigger: '.about-image',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 1
+    });
+
+    gsap.from('.about-list li', {
+      scrollTrigger: {
+        trigger: '.about-list',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      x: -30,
+      duration: 0.8,
+      stagger: 0.1
+    });
+
+    // Skills section animations
+    gsap.from('#Skills h2', {
+      scrollTrigger: {
+        trigger: '#Skills',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1
+    });
+
+    gsap.from('.skills-column', {
+      scrollTrigger: {
+        trigger: '.skills-container',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2
+    });
+
+    gsap.from('.skill-badge', {
+      scrollTrigger: {
+        trigger: '.skills-container',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.5,
+      stagger: 0.1
+    });
+
+    // Project cards animation (existing)
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach((card, index) => {
       gsap.fromTo(card,
@@ -119,7 +223,54 @@ function App() {
       );
     });
 
-    // Auto-advance carousel
+    // Resume section animations
+    gsap.from('#Resume h2', {
+      scrollTrigger: {
+        trigger: '#Resume',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1
+    });
+
+    gsap.from('.cv', {
+      scrollTrigger: {
+        trigger: '.cv',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      scale: 0.9,
+      duration: 1
+    });
+
+    // Contact section animations
+    gsap.from('#contact h2', {
+      scrollTrigger: {
+        trigger: '#contact',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1
+    });
+
+    gsap.from('.Contact img', {
+      scrollTrigger: {
+        trigger: '.Contact',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.8,
+      stagger: 0.2
+    });
+
+    // Auto-advance carousel (existing code)
     const intervals = [];
     carouselRefs.current.forEach((container, index) => {
       if (container) {
