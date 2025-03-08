@@ -165,7 +165,8 @@
   position: relative;
   overflow: hidden;
   background: #E84A24;
-  /* transition: background 0.5s ease-in-out; */
+  transition: background 0.5s ease-in-out;
+
 }
 
 .Skills h2 {
@@ -255,7 +256,6 @@
   mix-blend-mode: normal;
 }
 
-/* Commenting out hover effect styles
 .skill-badge:before,
 .skill-badge:after {
   content: "";
@@ -285,7 +285,6 @@
 .skill-badge:hover:after {
   transform: rotate(180deg) translateX(100%);
 }
-*/
 
 .skill-icon {
   display: flex;
@@ -294,12 +293,12 @@
   font-size: 1rem;
   font-weight: 400;
   color: white;
-  /* transition: color 0.3s ease; */
+  transition: color 0.3s ease;
 }
 
-/* .skill-badge:hover .skill-icon {
+.skill-badge:hover .skill-icon {
   color: var(--skill-color);
-} */
+}
 
 .skill-icon svg {
   color: var(--skill-color);
@@ -307,21 +306,6 @@
   height: 1.2em;
   mix-blend-mode: normal;
 }
-
-/* Keep the skill colors for reference */
-.skill-icon.html5 { --skill-color: #E44D26; }
-.skill-icon.css3 { --skill-color: #264DE4; }
-.skill-icon.javascript { --skill-color: #F0DB4F; }
-.skill-icon.react { --skill-color: #61DAFB; }
-.skill-icon.vue { --skill-color: #42B883; }
-.skill-icon.tailwind { --skill-color: #38BDF8; }
-.skill-icon.bootstrap { --skill-color: #7952B3; }
-.skill-icon.nodejs { --skill-color: #539E43; }
-.skill-icon.java { --skill-color: #007396; }
-.skill-icon.python { --skill-color: #3776AB; }
-.skill-icon.sql { --skill-color: #336791; }
-.skill-icon.mongodb { --skill-color: #47A248; }
-.skill-icon.git { --skill-color: #F05032; }
 
 /* Remove old hover styles */
 .skill-badge.html5:hover,
@@ -339,6 +323,21 @@
 .skill-badge.git:hover { 
   background: rgba(255, 255, 255, 0.1);
 }
+
+/* Keep the skill colors for reference */
+.skill-icon.html5 { --skill-color: #E44D26; }
+.skill-icon.css3 { --skill-color: #264DE4; }
+.skill-icon.javascript { --skill-color: #F0DB4F; }
+.skill-icon.react { --skill-color: #61DAFB; }
+.skill-icon.vue { --skill-color: #42B883; }
+.skill-icon.tailwind { --skill-color: #38BDF8; }
+.skill-icon.bootstrap { --skill-color: #7952B3; }
+.skill-icon.nodejs { --skill-color: #539E43; }
+.skill-icon.java { --skill-color: #007396; }
+.skill-icon.python { --skill-color: #3776AB; }
+.skill-icon.sql { --skill-color: #336791; }
+.skill-icon.mongodb { --skill-color: #47A248; }
+.skill-icon.git { --skill-color: #F05032; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -667,5 +666,222 @@ body {
   font-weight: 600;
   margin: 0 auto;
   text-transform:uppercase;
+}
+
+.Projects {
+  padding: 4rem 2rem;
+  background: #f5f5f7;
+}
+
+.Projects h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+  padding-left: 70px;
+  position: relative;
+  color: #000022;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.Projects h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  border-bottom: 3px solid #E28413;
+  padding-bottom: 10px;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.project-card:nth-child(even) {
+  direction: rtl;
+}
+
+.project-card:nth-child(even) .project-content {
+  direction: ltr;
+}
+
+.project-image {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  background: #f5f5f7;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: #f5f5f7;
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.project-description {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-tech {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.tech-badge {
+  background: #e8e8e8;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tech-icon {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}
+
+.tech-badge svg {
+  width: 1em;
+  height: 1em;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover {
+  transform: translateY(-2px);
+}
+
+.project-link.primary {
+  background: #000;
+  color: white;
+}
+
+.project-link.secondary {
+  background: #e8e8e8;
+  color: #000;
+}
+
+@media (max-width: 1024px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-image {
+    height: 400px;
+  }
+
+  .project-card:nth-child(even) {
+    direction: ltr;
+  }
+
+  .Projects {
+    padding: 3rem 1rem;
+  }
+
+  .project-container {
+    gap: 4rem;
+  }
 }
 

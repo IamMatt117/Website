@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './css/App.css';
@@ -9,10 +9,6 @@ import emailRed from './images/emailRed.png'
 import gitlab from './images/gitlab.png'
 import gitlabHover from './images/gitlabHover.png'
 import resume from './images/Resume-cropped.svg'
-import haul from './images/BigHaul.png'
-import park from './images/park.jpg'
-import road from './images/car.png'
-import django from './images/Django.png'
 import SidePanel from './components/sidepanel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -26,9 +22,12 @@ import {
   faNodeJs, 
   faJava, 
   faPython, 
-  faGitAlt
+  faGitAlt,
+  faFigma
 } from '@fortawesome/free-brands-svg-icons'
-import { faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { faD, faDatabase } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faHtml5, 
@@ -47,6 +46,9 @@ library.add(
 function App() {
   const [hover, setHover] = useState(false);
   const [skillsBackground, setSkillsBackground] = useState('linear-gradient(135deg, #000022 0%, #E28413 100%)');
+  const [activeIndices, setActiveIndices] = useState([0, 0]); // Track active image for each carousel
+  const projectsRef = useRef(null);
+  const carouselRefs = useRef([]);
 
   const handleSkillHover = (skillName) => {
     const gradients = {
@@ -69,6 +71,93 @@ function App() {
   const handleSkillLeave = () => {
     setSkillsBackground('linear-gradient(135deg, #000022 0%, #E28413 100%)');
   };
+
+  // Updated Carousel functionality
+  const handleCarousel = (direction, carouselIndex) => {
+    const container = carouselRefs.current[carouselIndex];
+    if (!container) return;
+
+    const images = container.querySelectorAll('.carousel-image');
+    const totalImages = images.length;
+    
+    setActiveIndices(prevIndices => {
+      const currentIndex = prevIndices[carouselIndex];
+      const newIndex = direction === 'next'
+        ? (currentIndex + 1) % totalImages
+        : (currentIndex - 1 + totalImages) % totalImages;
+      
+      const newIndices = [...prevIndices];
+      newIndices[carouselIndex] = newIndex;
+      return newIndices;
+    });
+  };
+
+  // GSAP animations
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Project cards animation
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+      gsap.fromTo(card,
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    // Auto-advance carousel
+    const intervals = [];
+    carouselRefs.current.forEach((container, index) => {
+      if (container) {
+        const interval = setInterval(() => {
+          handleCarousel('next', index);
+        }, 5000);
+        intervals.push(interval);
+      }
+    });
+
+    return () => {
+      intervals.forEach(interval => clearInterval(interval));
+    };
+  }, []);
+
+  // Effect to handle carousel transitions
+  useEffect(() => {
+    carouselRefs.current.forEach((container, carouselIndex) => {
+      if (!container) return;
+      
+      const images = container.querySelectorAll('.carousel-image');
+      images.forEach((image, imageIndex) => {
+        if (imageIndex === activeIndices[carouselIndex]) {
+          gsap.to(image, {
+            opacity: 1,
+            duration: 0.3
+          });
+          image.classList.add('active');
+        } else {
+          gsap.to(image, {
+            opacity: 0,
+            duration: 0.3
+          });
+          image.classList.remove('active');
+        }
+      });
+    });
+  }, [activeIndices]);
 
   useEffect(() => {
     document.title = "Matthew Mahon";
@@ -269,61 +358,95 @@ function App() {
           </div>
         </div>
       </section>
-          <h2 id='Projects' style={{textAlign: 'center', color: '#015761'}}>Projects</h2>
           <section id='Projects' className="Projects">
-          {/* <div class="slides-wrapper"> */}
-{/* <section class="panel">
-	  <div class="panel-content"><h1>Section 1</h1>
-	  </div>
-</section>
-<section class="panel section-2">
-  <div class="panel-content height"><div class="dd"><h1>Section 2</h1>
-    <p>This section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes inThis section is supposed to be long and scrollable within before the next slide comes in</p>
-  </div></div>
-</section>
-<section class="panel section-3">
-	  <div class="panel-content"><h1>Section 3</h1></div>
-</section>
-<section class="panel">
-	  <div class="panel-content"><h1>Section 4</h1></div>
-</section>
-</div> */}
+            <h2>My Projects</h2>
+            <div className="project-container">
+              <div className="project-card">
+                <div className="project-image">
+                  <div className="carousel">
+                    <div className="carousel-container" ref={el => carouselRefs.current[0] = el}>
+                      <img src={require('./images/RoadReady/Home.png')} alt="1" className={`carousel-image ${activeIndices[0] === 0 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/SignIn.png')} alt="2" className={`carousel-image ${activeIndices[0] === 1 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/SignUp.png')} alt="3" className={`carousel-image ${activeIndices[0] === 2 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/Sidepanel.png')} alt="3" className={`carousel-image ${activeIndices[0] === 3 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/TheoryTest.png')} alt="3" className={`carousel-image ${activeIndices[0] === 4 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/QuestionCorrect.png')} alt="3" className={`carousel-image ${activeIndices[0] === 5 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/MockTest.png')} alt="3" className={`carousel-image ${activeIndices[0] === 6 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/LeavingWarning.png')} alt="3" className={`carousel-image ${activeIndices[0] === 7 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/TestPass.png')} alt="3" className={`carousel-image ${activeIndices[0] === 8 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/TestHistory.png')} alt="3" className={`carousel-image ${activeIndices[0] === 9 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/TestCenter.png')} alt="3" className={`carousel-image ${activeIndices[0] === 10 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadReady/Instructor.png')} alt="3" className={`carousel-image ${activeIndices[0] === 11 ? 'active' : ''}`}/>
+                    </div>
+                    <button className="carousel-button prev" onClick={() => handleCarousel('prev', 0)}>❮</button>
+                    <button className="carousel-button next" onClick={() => handleCarousel('next', 0)}>❯</button>
+                  </div>
+                </div>
+                <div className="project-content">
+                  <h3 className="project-title">Road Ready App</h3>
+                  <p className="project-description">
+                    A Mobile App designed to create a one stop place to study for the Driving/Theory Test. Features include Learning Material, Theory Questionnaire with feedback, and a tool with prebuilt test routes.                  </p>
+                  <div className="project-tech">
+                    <span className="tech-badge"><FontAwesomeIcon icon={faReact} /> React Native</span>
+                    <span className="tech-badge"><img src={require('./images/firebase.png')} alt="Firebase" className="tech-icon" /> Firebase</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faFigma} />Figma</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faHtml5} />HTML</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faCss3Alt} />CSS</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faJs} />JavaScript</span>
+                  </div>
+                  <div className="project-links">
+                    <a href="https://gitlab.com/group7-big-haul/The_Big_Haul" className="project-link primary">
+                      <FontAwesomeIcon icon={faGithub} /> View Code
+                    </a>
+                    <a href="#" className="project-link secondary">
+                      <FontAwesomeIcon icon={faLink} /> Live Demo
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-          <div className="container">
-          <div className='item-a' style={{background: '#015761', color: '#F7DC4F'}}>
-            <h3>The Big Haul</h3>
-            <img style={{width: '25vw', margin: 'auto', padding: 'auto', display: 'block'}} src={haul}></img>
-          </div>
-          <div className='item-a-p' style={{background: '#F1F0F0', position: 'relative'}}>
-            <p style={{margin: '10px'}}>Users are asked a series of questions that they have to answer.The first answer will earn the user $100. Correct answers from that point forward will double what's in the users bank. Each incorrect answer will remove a life. Failing the final round will result in a game over. The aim is to reach $500,000 with at least 1 life. You reach $500,000 if you earn the Big Haul by reaching the end. Losing 3 lives will cause the User to lose and the game ends. Each game holds a variety of rounds with each round being unique while keeping them dynamic to make sure not every game will play out the same as the previous one.</p>
-            <a className='code-button' href="https://gitlab.com/group7-big-haul/The_Big_Haul" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>View Code</a>
+              <div className="project-card">
+                <div className="project-image">
+                  <div className="carousel">
+                    <div className="carousel-container" ref={el => carouselRefs.current[1] = el}>
+                      <img src={require('./images/RoadWeb/Home1.png')} alt="Django Web App" className={`carousel-image ${activeIndices[1] === 0 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Home2.png')} alt="Django Web App 2" className={`carousel-image ${activeIndices[1] === 1 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Home3.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 2 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Home4.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 3 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Login.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 4 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Pricing.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 5 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/OrderComplete.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 6 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/OrderHistory.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 7 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Timetable.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 8 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Contact.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 9 ? 'active' : ''}`}/>
+                      <img src={require('./images/RoadWeb/Profile.png')} alt="Django Web App 3" className={`carousel-image ${activeIndices[1] === 10 ? 'active' : ''}`}/>
+                    </div>
+                    <button className="carousel-button prev" onClick={() => handleCarousel('prev', 1)}>❯</button>
+                    <button className="carousel-button next" onClick={() => handleCarousel('next', 1)}>❮</button>
+                  </div>
+                </div>
+                <div className="project-content">
+                  <h3 className="project-title">Road Ready Web App</h3>
+                  <p className="project-description">
+                    A simple Web App designed using Django, showcasing modern web development practices and clean architecture.
+                  </p>
+                  <div className="project-tech">
+                    <span className="tech-badge"><FontAwesomeIcon icon={faD} />Django</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faPython} />Python</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faDatabase} />Sqlite</span>
+                  </div>
+                  <div className="project-links">
+                    <a href="https://gitlab.computing.dcu.ie/rawata2/2024-ca4094-rawata2-mahonm28" className="project-link primary">
+                      <FontAwesomeIcon icon={faGithub} /> View Code
+                    </a>
+                    <a href="#" className="project-link secondary">
+                      <FontAwesomeIcon icon={faLink} /> Live Demo
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          <div className='item-b' style={{background: '#015761', color: '#F7DC4F'}}>
-            <h3>Park at DCU</h3>
-            <img src={park} style={{width: '30vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
-            </div>
-            <div className='item-b-p' style={{background: '#F1F0F0', position: 'relative'}}>
-            <p>Struggling to park at DCU? This Web App retrieves available spaces from all DCU carparks and relays that information back to the user. Simply input the carpark you wish to use and the Web App will display the number of available spaces (if any).</p>
-            <a className='code-button' href="https://gitlab.computing.dcu.ie/mahonm28/2023-ca377-mahonm28-parkatdcu" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>View Code</a>
-          </div>
-          <div className='item-c' style={{background: '#015761', color: '#F7DC4F'}}>
-            <h3>Django Web App - In Progress</h3>
-            <img src={django}style={{width: '25vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
-            </div>
-            <div className='item-c-p' style={{background: '#F1F0F0', position: 'relative'}}>
-            <p>This is a simple Web App designed using Django.</p>
-            <a className='code-button' href="https://gitlab.computing.dcu.ie/rawata2/2024-ca4094-rawata2-mahonm28" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>View Code</a>
-          </div>
-          <div className='item-d' style={{background: '#015761', color: '#F7DC4F'}}>
-            <h3>Road Ready - In Progress</h3>
-            <img src={road} style={{height: '25vw', margin: 'auto', padding: 'auto', display: 'block'}}></img>
-            </div>
-            <div className='item-d-p' style={{background: '#F1F0F0', position: 'relative'}}>
-            <p>A Mobile App designed to create a one stop place to study for the Driving/Theory Test. The app hosts 3 main features. The first feature being Learning Material, a section containing any information a user might need about rules of the road. The second feature is a Theory Questionnaire with feedback, this feature is designed to allow the user to practice their knowledge for the Theory Test with feedback to help them improve on areas where they are weak. The last feature is a a tool with prebuilt test routes and ability to create new routes.</p>
-            <a className='code-button' href="https://gitlab.computing.dcu.ie/mahonm28/2024-ca472-mahonm28-rawata2" style={{marginLeft: '10px', padding: '5px', bottom: '10px', position: 'absolute'}}>View Code</a>
-          </div>
-          </div>
-        </section>
+          </section>
         <section id='Resume' className="Resume">
             <h2 style={{color: '#015761'}}>Resume</h2>
           <div id='Resume' style={{background: '#F1F0F0'}}>
