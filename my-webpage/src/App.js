@@ -670,6 +670,7 @@ function App() {
                     <span className="tech-badge"><FontAwesomeIcon icon={faD} />Django</span>
                     <span className="tech-badge"><FontAwesomeIcon icon={faPython} />Python</span>
                     <span className="tech-badge"><FontAwesomeIcon icon={faDatabase} />Sqlite</span>
+                    <span className="tech-badge"><FontAwesomeIcon icon={faBootstrap} />Bootstrap</span>
                   </div>
                   <div className="project-links">
                     <a href="https://gitlab.computing.dcu.ie/rawata2/2024-ca4094-rawata2-mahonm28" className="project-link primary">
@@ -739,7 +740,7 @@ function App() {
             </div>
             <div className="footer-center">
               <div className="social-links">
-                <a href="https://gitlab.computing.dcu.ie/dashboard/projects" className="social-link">
+                <a href="https://github.com/IamMatt117" className="social-link">
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
                 <a href="https://www.linkedin.com/in/matthew-mahon-29a768297/" className="social-link">
