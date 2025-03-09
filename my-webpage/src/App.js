@@ -212,40 +212,141 @@ function App() {
     gsap.fromTo('#Resume h2', 
       {
         opacity: 0,
-        y: 30
+        y: 50
       },
       {
         opacity: 1,
         y: 0,
         duration: 1,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: '#Resume',
-          start: 'top 90%',
-          end: 'bottom 10%',
-          toggleActions: 'play reverse play reverse',
+          start: 'top 80%',
+          end: 'top 30%',
+          scrub: 0.5
         }
       }
     );
 
-    gsap.fromTo('.cv',
+    // Create main timeline for experience section
+    const mainTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.experience-timeline',
+        start: 'top 80%',
+        end: 'bottom 20%',
+        scrub: 0.5
+      }
+    });
+
+    // Animate the timeline line
+    mainTl.fromTo('.experience-timeline::before',
+      {
+        scaleY: 0,
+        transformOrigin: 'top'
+      },
+      {
+        scaleY: 1,
+        duration: 2,
+        ease: "none"
+      }
+    );
+
+    // Timeline items animation with stagger
+    const experienceItems = gsap.utils.toArray('.experience-item');
+    experienceItems.forEach((item, index) => {
+      const itemTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 90%',
+          end: 'top 10%',
+          scrub: 0.5
+        }
+      });
+
+      // Dot animation
+      itemTl.fromTo(item.querySelector('.timeline-dot'),
+        {
+          scale: 0,
+          opacity: 0
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.3,
+          ease: "back.out(2)"
+        }
+      );
+
+      // Content animation
+      itemTl.fromTo(item.querySelector('.experience-content'),
+        {
+          x: -50,
+          opacity: 0,
+          scale: 0.8,
+          transformOrigin: 'left center'
+        },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: "power2.out"
+        },
+        "<+=0.1" // Start slightly after dot animation
+      );
+
+      // Add hover animations
+      const content = item.querySelector('.experience-content');
+      const dot = item.querySelector('.timeline-dot');
+      
+      content.addEventListener('mouseenter', () => {
+        gsap.to(content, {
+          scale: 1.02,
+          x: 10,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        gsap.to(dot, {
+          scale: 1.3,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      content.addEventListener('mouseleave', () => {
+        gsap.to(content, {
+          scale: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        gsap.to(dot, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Download button animation
+    gsap.fromTo('.download-button',
       {
         opacity: 0,
-        scale: 0.9
+        y: 20
       },
       {
         opacity: 1,
-        scale: 1,
+        y: 0,
         duration: 1,
+        ease: "power2.out",
         scrollTrigger: {
-          trigger: '.cv',
+          trigger: '.download-button',
           start: 'top 80%',
-          end: 'top 20%',
-          toggleActions: 'play reverse play reverse',
+          end: 'top 30%',
+          scrub: 0.5
         }
       }
     );
-
-    // Contact section animations
 
     // Auto-advance carousel (existing code)
     const intervals = [];
@@ -576,10 +677,52 @@ function App() {
             </div>
           </section>
         <section id='Resume' className="Resume">
-            <h2 style={{color: '#015761'}}>Resume</h2>
-          <div id='Resume' style={{background: '#F1F0F0'}}>
-            <img className="cv" src={resume} style={{marginLeft: 'auto', marginRight: 'auto', display: 'block'}}></img>
-          </div>
+            <h2>Experience</h2>
+            <div className="download-button">
+              <a href={require("./CV/MatthewMahonCV.pdf")} download="MatthewMahonCV.pdf">
+                <span className="download-icon">⬇</span> Download Resume
+              </a>
+            </div>
+            <div className="experience-timeline">
+              <div className="experience-item">
+                <div className="timeline-dot"></div>
+                <div className="experience-content">
+                  <h3>Frontend Developer</h3>
+                  <p className="date">Dec 2024 - PRESENT</p>
+                  <p className="description">
+                    I build responsive, modern websites and reusable UI components for clients using Next.js and Tailwind CSS, focusing 
+                    on clean design and seamless user experiences. Collaborate with the team to implement user-friendly features and 
+                    designs.
+                  </p>
+                </div>
+              </div>
+
+              <div className="experience-item">
+                <div className="timeline-dot"></div>
+                <div className="experience-content">
+                  <h3>Software Developer Intern</h3>
+                  <p className="date">JAN 2023 - AUG 2023</p>
+                  <p className="description">
+                    During my summer internship as a Software Developer, I engaged in converting Figma designs into reusable 
+                    components for websites and developing maintainable code. I Designed and developed interactive web applications using HTML, CSS, JavaScript, and React, 
+                    ensuring seamless user experiences and responsiveness across devices. I Worked closely with product owners, designers, and developers, 
+                    following Agile methodologies to rapidly iterate from prototyping to final implementation.
+                  </p>
+                </div>
+              </div>
+
+              <div className="experience-item">
+                <div className="timeline-dot"></div>
+                <div className="experience-content">
+                  <h3>Started Learning Web Development</h3>
+                  <p className="date">DEC 2022</p>
+                  <p className="description">
+                    My web development journey began with learning HTML, CSS, and Javascript. I started building small projects and 
+                    learning the basics of web development.
+                  </p>
+                </div>
+              </div>
+            </div>
         </section>
         <section id='contact' className="Contact">
         <div style={{background: '#015761', color: 'white'}}>
