@@ -1036,3 +1036,87 @@ main {
   }
 }
 
+.Contact {
+  background: linear-gradient(to right, #001F2D, #015761);
+  color: white;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.Contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left h2 {
+  font-size: 2rem;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.footer-credit {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-link {
+  color: white;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: #E28413;
+  transform: translateY(-2px);
+}
+
+.mail-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.mail-button:hover {
+  background-color: #E28413;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .social-links {
+    margin: 1rem 0;
+  }
+}
+

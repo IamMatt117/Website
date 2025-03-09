@@ -23,10 +23,12 @@ import {
   faJava, 
   faPython, 
   faGitAlt,
-  faFigma
+  faFigma,
+  faGithub,
+  faLinkedin,
+  faInstagram
 } from '@fortawesome/free-brands-svg-icons'
-import { faD, faDatabase } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faD, faDatabase, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -40,7 +42,11 @@ library.add(
   faJava, 
   faPython, 
   faGitAlt,
-  faDatabase
+  faDatabase,
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faEnvelope
 )
 
 function App() {
@@ -102,18 +108,18 @@ function App() {
       gsap.fromTo(element,
         {
           opacity: 0,
-          y: 50
+          y: 30
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          delay: index * 0.2,
+          duration: 0.8,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 90%",
-            end: "bottom 10%",
-            toggleActions: "play reverse play reverse",
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 0.5
           }
         }
       );
@@ -124,17 +130,18 @@ function App() {
     gsap.fromTo(skillsTitle,
       {
         opacity: 0,
-        y: 50
+        y: 30
       },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: skillsTitle,
-          start: "top 90%",
-          end: "bottom 10%",
-          toggleActions: "play reverse play reverse",
+          start: "top 85%",
+          end: "top 15%",
+          scrub: 0.5
         }
       }
     );
@@ -144,18 +151,18 @@ function App() {
       gsap.fromTo(column,
         {
           opacity: 0,
-          y: 50
+          y: 30
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          delay: index * 0.3,
+          duration: 0.8,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: column,
-            start: "top 90%",
-            end: "bottom 10%",
-            toggleActions: "play reverse play reverse",
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 0.5
           }
         }
       );
@@ -166,20 +173,20 @@ function App() {
       gsap.fromTo(badge,
         {
           opacity: 0,
-          y: 30,
-          scale: 0.8
+          y: 20,
+          scale: 0.95
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
-          delay: 0.5 + (index * 0.1),
+          duration: 0.6,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: badge,
-            start: "top 90%",
-            end: "bottom 10%",
-            toggleActions: "play reverse play reverse",
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 0.5
           }
         }
       );
@@ -191,18 +198,18 @@ function App() {
       gsap.fromTo(card,
         {
           opacity: 0,
-          y: 50
+          y: 30
         },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          delay: index * 0.2,
+          duration: 0.8,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: card,
-            start: "top 90%",
-            end: "bottom 10%",
-            toggleActions: "play reverse play reverse",
+            start: "top 85%",
+            end: "top 15%",
+            scrub: 0.5
           }
         }
       );
@@ -725,19 +732,27 @@ function App() {
             </div>
         </section>
         <section id='contact' className="Contact">
-        <div style={{background: '#015761', color: 'white'}}>
-          <h2 id='contact'>Contact Me</h2>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', marginLeft: '25%', marginRight: '25%' }}>
-            <a href="https://www.linkedin.com/in/matthew-mahon-29a768297/">
-              <img className='linkedin' src={linkedin} onMouseOver={e => {e.currentTarget.src = linkedinRed; setHover(true)}} onMouseOut={e => {e.currentTarget.src = linkedin; setHover(false)}} style={ hover ? {cursor: 'pointer'} : {cursor: 'default'}} />
-            </a>
-            
-            <img className='linkedin' src={email} onClick={() => window.location = 'mailto:matthewmahon@rocketmail.com'} onMouseOver={e => {e.currentTarget.src = emailRed; setHover(true)}} onMouseOut={e => {e.currentTarget.src = email; setHover(false)}} style={ hover ? {cursor: 'pointer'} : {cursor: 'default'}}></img>
-            <a href="https://gitlab.computing.dcu.ie/dashboard/projects">
-              <img className='linkedin' src={gitlab} onMouseOver={e => {e.currentTarget.src = gitlabHover; setHover(true)}} onMouseOut={e => {e.currentTarget.src = gitlab; setHover(false)}} style={ hover ? {cursor: 'pointer'} : {cursor: 'default'}}></img>
-            </a>
+          <div className="footer-container">
+            <div className="footer-left">
+              <h2>Contact</h2>
+              <p className="footer-credit">Designed & Built by Matthew Mahon © 2024</p>
+            </div>
+            <div className="footer-center">
+              <div className="social-links">
+                <a href="https://gitlab.computing.dcu.ie/dashboard/projects" className="social-link">
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+                <a href="https://www.linkedin.com/in/matthew-mahon-29a768297/" className="social-link">
+                  <FontAwesomeIcon icon={['fab', 'linkedin']} />
+                </a>
+              </div>
+            </div>
+            <div className="footer-right">
+              <a href="mailto:matthewmahon@rocketmail.com" className="mail-button">
+                <FontAwesomeIcon icon="envelope" /> Mail me
+              </a>
+            </div>
           </div>
-        </div>
         </section>
       </body>
     </div>
