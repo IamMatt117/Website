@@ -13,21 +13,24 @@ const SidePanel = () => {
   };
 
   const handleScroll = () => {
-    console.log('handleScroll called');
     const sections = document.querySelectorAll('section');
-    console.log('sections:', sections);
     let currentSection = '';
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      console.log('section:', section, 'sectionTop:', sectionTop, 'sectionHeight:', sectionHeight);
-      if (window.scrollY >= sectionTop - 60 && window.scrollY < sectionTop + sectionHeight - 60) {
-        currentSection = section.getAttribute('id');
-      }
-    });
+    // Check if we're at the bottom of the page
+    const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
 
-    console.log('currentSection:', currentSection);
+    if (isAtBottom) {
+      currentSection = 'Contact';
+    } else {
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop - 60 && window.scrollY < sectionTop + sectionHeight - 60) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+    }
+
     setActiveSection(currentSection);
   };
 

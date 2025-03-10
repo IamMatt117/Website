@@ -740,7 +740,7 @@ function App() {
               </div>
             </div>
         </section>
-        <section id='contact' className="Contact">
+        <section id='Contact' className="Contact">
           <div className="footer-container">
             <div className="footer-left">
               <h2>Contact</h2>
