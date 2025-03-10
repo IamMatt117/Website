@@ -638,7 +638,7 @@ function App() {
                     <span className="tech-badge"><FontAwesomeIcon icon={faJs} />JavaScript</span>
                   </div>
                   <div className="project-links">
-                    <a href="https://gitlab.com/group7-big-haul/The_Big_Haul" className="project-link primary">
+                    <a href="https://github.com/IamMatt117/Final-Year-Project" className="project-link primary">
                       <FontAwesomeIcon icon={faGithub} /> View Code
                     </a>
                     {/* <a href="#" className="project-link secondary">
@@ -680,7 +680,7 @@ function App() {
                     <span className="tech-badge"><FontAwesomeIcon icon={faBootstrap} />Bootstrap</span>
                   </div>
                   <div className="project-links">
-                    <a href="https://gitlab.computing.dcu.ie/rawata2/2024-ca4094-rawata2-mahonm28" className="project-link primary">
+                    <a href="https://github.com/IamMatt117/Driving-Lesson-WebApp" className="project-link primary">
                       <FontAwesomeIcon icon={faGithub} /> View Code
                     </a>
                     {/* <a href="#" className="project-link secondary">
@@ -691,11 +691,11 @@ function App() {
               </div>
             </div>
           </section>
-        <section id='Resume' className="Resume">
+        <section id='Experience' className="Resume">
             <div className="section-divider"></div>
             <h2>Experience</h2>
             <div className="download-button">
-              <a href={require("./CV/MatthewMahonCV.pdf")} download="MatthewMahonCV.pdf">
+              <a href={require("./CV/Matthew_Mahon_CV.pdf")} download="Matthew_Mahon_CV.pdf">
                 <span className="download-icon">⬇</span> Download Resume
               </a>
             </div>
@@ -751,7 +751,7 @@ function App() {
                 <a href="https://github.com/IamMatt117" className="social-link">
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
-                <a href="https://www.linkedin.com/in/matthew-mahon-29a768297/" className="social-link">
+                <a href="https://www.linkedin.com/in/matthew-mahon-a04648232/" className="social-link">
                   <FontAwesomeIcon icon={['fab', 'linkedin']} />
                 </a>
               </div>

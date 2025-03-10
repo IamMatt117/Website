@@ -50,14 +50,14 @@ const SidePanel = () => {
       <img className="profile" src={require('../images/sidepanel/smile.png')} alt="profile" />
       <h2>Matthew Mahon</h2>
         <div class="socials">
-          <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" class="social-btn"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/matthew-mahon-a04648232/" class="social-btn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/IamMatt117" class="social-btn"><i class="bi bi-github"></i></a>
         </div>
         <ul>
             <li className={`btn-8 ${activeSection === '' ? 'active' : ''}`}><a href="#"><span><i className="bi bi-house navicon"></i> Home</span></a></li>
             <li className={`btn-8 ${activeSection === 'About' ? 'active' : ''}`}><a href="#About"><span><i className="bi bi-person navicon"></i> About</span></a></li>
             <li className={`btn-8 ${activeSection === 'Projects' ? 'active' : ''}`}><a href="#Projects"><span><i className="bi bi-images navicon"></i> Projects</span></a></li>
-            <li className={`btn-8 ${activeSection === 'Resume' ? 'active' : ''}`}><a href="#Resume"><span><i className="bi bi-file-earmark-text navicon"></i> Resume</span></a></li>
+            <li className={`btn-8 ${activeSection === 'Experience' ? 'active' : ''}`}><a href="#Experience"><span><i className="bi bi-file-earmark-text navicon"></i> Experience</span></a></li>
             <li className={`btn-8 ${activeSection === 'Contact' ? 'active' : ''}`}><a href="#Contact"><span><i className="bi bi-envelope navicon"></i> Contact</span></a></li>
           </ul>
       </div>

@@ -36,7 +36,7 @@
 .profile {
     display: block;
     margin: 20px auto;
-    width: 170px; /* Adjust the width as needed */
+    width: 200px; /* Adjust the width as needed */
     height: 200px;
     border-radius: 50%;
     border: 5px solid #fff; /* Make the image circular */
@@ -109,7 +109,15 @@
 }
 
 .btn-8 span {
-    mix-blend-mode: difference;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-8 i {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px;
 }
 
 .btn-8 {
