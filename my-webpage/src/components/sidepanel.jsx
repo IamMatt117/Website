@@ -44,7 +44,7 @@ const SidePanel = () => {
         {isOpen ? <i class="bi bi-x-lg"></i> : <i class="bi bi-list"></i>}
       </button>
       <div className="content">
-      <img className="profile" src={require('../images/sidepanel/Me.png')} alt="profile" />
+      <img className="profile" src={require('../images/sidepanel/smile.png')} alt="profile" />
       <h2>Matthew Mahon</h2>
         <div class="socials">
           <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>

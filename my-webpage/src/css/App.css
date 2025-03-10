@@ -934,6 +934,7 @@ main {
   margin-bottom: 2rem;
   font-size: 2.5rem;
   color: #000022;
+  margin-top: 0;
 }
 
 .download-button {
@@ -974,7 +975,7 @@ main {
   position: absolute;
   left: 0;
   top: 0;
-  width: 2px;
+  width: 3px;
   height: 100%;
   background-color: #E28413;
 }
@@ -987,7 +988,7 @@ main {
 
 .timeline-dot {
   position: absolute;
-  left: -6px;
+  left: -8px;
   top: 0;
   width: 14px;
   height: 14px;
@@ -1037,7 +1038,7 @@ main {
 }
 
 .Contact {
-  background: linear-gradient(to right, #001F2D, #015761);
+  background: #000022;
   color: white;
   padding: 2rem 0;
   position: relative;
@@ -1118,5 +1119,14 @@ main {
   .social-links {
     margin: 1rem 0;
   }
+}
+
+.section-divider {
+  width: 100px;
+  height: 10px;
+  background: #E28413;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  border-radius: 10px;
 }
 

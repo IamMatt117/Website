@@ -499,8 +499,15 @@ function App() {
       <body>
       <section id='About' className="About">
         <h2 style={{ color: '#000022' }}>About Me</h2>
-        <p>Hi my names Matthew. I'm a 23-year-old adventurer with a deep passion for the outdoors. I find solace in the wilderness, frequently embarking on hikes and camping expeditions to reconnect with nature. Beyond the landscapes, I'm a fierce competitor on the football field, displaying both skill and sportsmanship. With four years of programming experience under my belt, I've honed my technical prowess and problem-solving abilities. Currently, I am pursuing higher education at Dublin City University, where they're undoubtedly combining their love for technology with their academic pursuits to forge a promising future. This dynamic blend of outdoor enthusiasm, athletic prowess, and technical acumen makes me a multifaceted and driven individual.</p>
-        <div className="about-container">
+        <p>I'm Matthew Mahon, a passionate Software Developer with a strong background in building scalable, efficient, and user-friendly applications.
+          I have experience working with Java, Python, HTML, CSS, JavaScript, React, and I'm skilled in Agile methodologies, UX design, and full software development lifecycle.
+          I have completed a Bachelor of Science in Computing for Business in DCU, where I learned important skills in teamwork, time management, and delivering projects on time.
+          There I worked on projects which taught me RESTful APIs, Object-Oriented Programming, and Database Design.</p>
+        <p style={{marginTop: '-20px'}}>During my time as a Software Development Intern at General Motors, I collaborated with cross-functional teams to develop and deploy applications on Azure, debug issues, and create reusable components for future projects. 
+          My approach to coding is rooted in clean, maintainable code that ensures long-term stability and scalability.
+          Beyond development, I thrive in team environments, working closely with designers, product owners, and stakeholders to bring ideas to life. 
+          My passion for problem-solving and innovation drives me to continuously improve and stay ahead in the ever-evolving tech landscape.</p>
+          <div className="about-container">
           <img src={require('./images/Suit.png')} className="about-image" alt="logo" />
           <ul className="about-list">
             <li><i class="bi bi-chevron-right"></i><b>Birthday:</b> 2 May 2000</li>
@@ -634,9 +641,9 @@ function App() {
                     <a href="https://gitlab.com/group7-big-haul/The_Big_Haul" className="project-link primary">
                       <FontAwesomeIcon icon={faGithub} /> View Code
                     </a>
-                    <a href="#" className="project-link secondary">
+                    {/* <a href="#" className="project-link secondary">
                       <FontAwesomeIcon icon={faLink} /> Live Demo
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>
@@ -676,15 +683,16 @@ function App() {
                     <a href="https://gitlab.computing.dcu.ie/rawata2/2024-ca4094-rawata2-mahonm28" className="project-link primary">
                       <FontAwesomeIcon icon={faGithub} /> View Code
                     </a>
-                    <a href="#" className="project-link secondary">
+                    {/* <a href="#" className="project-link secondary">
                       <FontAwesomeIcon icon={faLink} /> Live Demo
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>
             </div>
           </section>
         <section id='Resume' className="Resume">
+            <div className="section-divider"></div>
             <h2>Experience</h2>
             <div className="download-button">
               <a href={require("./CV/MatthewMahonCV.pdf")} download="MatthewMahonCV.pdf">

@@ -6,7 +6,7 @@
     left: -290px;
     width: 250px;
     height: 100%;
-    background: linear-gradient(to right, #001F2D, #015761);
+    background: #000022;
     color: white;
     transition: left 0.3s;
     padding: 20px;
@@ -39,7 +39,7 @@
     width: 170px; /* Adjust the width as needed */
     height: 200px;
     border-radius: 50%;
-    border: 1px solid #fff; /* Make the image circular */
+    border: 5px solid #fff; /* Make the image circular */
 }
 
 .sidepanel .closebtn {
@@ -57,13 +57,14 @@
     right: 20px; /* Adjust to position the button at the top right of the screen */
     width: 50px;
     height: 50px;
-    background: linear-gradient(to right, #001F2D, #015761);
+    background: #000022;
     color: white;
     border: none;
     cursor: pointer;
     z-index: 1001; /* Ensure the button is in front of the side panel */
     font-size: 25px;
     border-radius: 50%;
+    border-color: none;
 }
 
 .toggle-button:hover::before {
