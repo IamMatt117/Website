@@ -54,7 +54,7 @@ const SidePanel = () => {
           <a href="https://github.com/IamMatt117" class="social-btn"><i class="bi bi-github"></i></a>
         </div>
         <ul>
-            <li className={`btn-8 ${activeSection === '' ? 'active' : ''}`}><a href="#"><span><i className="bi bi-house navicon"></i> Home</span></a></li>
+            <li className={`btn-8 ${activeSection === 'Home' ? 'active' : ''}`}><a href="#Home"><span><i className="bi bi-house navicon"></i> Home</span></a></li>
             <li className={`btn-8 ${activeSection === 'About' ? 'active' : ''}`}><a href="#About"><span><i className="bi bi-person navicon"></i> About</span></a></li>
             <li className={`btn-8 ${activeSection === 'Projects' ? 'active' : ''}`}><a href="#Projects"><span><i className="bi bi-images navicon"></i> Projects</span></a></li>
             <li className={`btn-8 ${activeSection === 'Experience' ? 'active' : ''}`}><a href="#Experience"><span><i className="bi bi-file-earmark-text navicon"></i> Experience</span></a></li>

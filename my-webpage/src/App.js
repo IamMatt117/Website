@@ -2,13 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './css/App.css';
-import linkedin from './images/Linkedin.png';
-import linkedinRed from './images/linkedinRed.png';
-import email from './images/email.png'
-import emailRed from './images/emailRed.png'
-import gitlab from './images/gitlab.png'
-import gitlabHover from './images/gitlabHover.png'
-import resume from './images/Resume-cropped.svg'
 import SidePanel from './components/sidepanel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -29,7 +22,6 @@ import {
   faInstagram
 } from '@fortawesome/free-brands-svg-icons'
 import { faD, faDatabase, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faHtml5, 
@@ -50,10 +42,8 @@ library.add(
 )
 
 function App() {
-  const [hover, setHover] = useState(false);
   const [skillsBackground, setSkillsBackground] = useState('linear-gradient(135deg, #000022 0%, #E28413 100%)');
   const [activeIndices, setActiveIndices] = useState([0, 0]); // Track active image for each carousel
-  const projectsRef = useRef(null);
   const carouselRefs = useRef([]);
 
   const handleSkillHover = (skillName) => {
@@ -483,7 +473,7 @@ function App() {
     <div>
     <SidePanel/>
       <div className="App">
-        <header className="App-header">
+        <header id='Home' className="App-header">
           <div className='header-content' style={{textAlign: 'center'}}>
           <h1 style={{marginBottom: 0, zIndex: 1}}> Matthew Mahon </h1>
           <div class="bg"></div>
